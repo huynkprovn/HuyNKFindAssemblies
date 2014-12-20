@@ -1,0 +1,40 @@
+﻿<UserControl 
+            
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="HuyNK.Pages.Home" 
+             mc:Ignorable="d">
+
+    <Grid Width="950" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="11*"/>
+            <RowDefinition Height="0*"/>
+        </Grid.RowDefinitions>
+
+
+        <DataGrid AutoGenerateColumns="False" Name="dataGrid" ItemsSource="{Binding Path=Elements[Champs]}" RenderTransformOrigin="0.504,0.508" Grid.RowSpan="2" >
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Champion" Binding="{Binding Path=Element[Champion].Value}" IsReadOnly="True"  CanUserSort="True"/>
+                <DataGridTextColumn Header="Filename" Binding="{Binding Path=Element[Filename].Value}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Creator" Binding="{Binding Path=Element[Creator].Value}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Path=Element[Status].Value}" IsReadOnly="True"/>
+                <DataGridHyperlinkColumn  Header="Github" Binding="{Binding Path=Element[Github].Value}" />
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="Install">Install</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                
+                
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>
