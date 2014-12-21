@@ -1,0 +1,53 @@
+﻿<UserControl
+
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="HuyNK.Pages.Home"
+        mc:Ignorable="d" BorderThickness="2,2,2,0" ClipToBounds="True" Grid.IsSharedSizeScope="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+
+    <Grid Width="950">
+        <Grid.RowDefinitions>
+
+        </Grid.RowDefinitions>
+
+
+        <DataGrid AutoGenerateColumns="False" Name="dataGrid" ItemsSource="{Binding Path=Elements[Champs]}"
+                      Grid.RowSpan="2" IsSelected="True" BorderThickness="1"
+                      Background="White" BorderBrush=" DarkOrange" IsSynchronizedWithCurrentItem="True" 
+                       SelectionMode="Extended" SelectionUnit="Cell"
+                  SelectedCellsChanged="DataGrid_OnSelectedCellsChanged">
+
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Champion" Binding="{Binding Path=Element[Champion].Value}"
+                                        IsReadOnly="True" CanUserSort="True" />
+                <DataGridTextColumn Header="Filename" Binding="{Binding Path=Element[Filename].Value}"
+                                        IsReadOnly="True" />
+                <DataGridTextColumn Header="Creator" Binding="{Binding Path=Element[Creator].Value}"
+                                        IsReadOnly="True" />
+                <DataGridTextColumn Header="Status" Binding="{Binding Path=Element[Status].Value}"
+                                        IsReadOnly="True" />
+                <DataGridHyperlinkColumn Header="Install" Binding="{Binding Path=Element[Install].Value}"  >
+                    <DataGridHyperlinkColumn.ElementStyle>
+                        <Style>
+                            <EventSetter Event="Hyperlink.Click" Handler="DG_Hyperlink_Click"/>
+                        </Style>
+                    </DataGridHyperlinkColumn.ElementStyle>
+                </DataGridHyperlinkColumn>
+                <DataGridHyperlinkColumn Header="Github" Binding="{Binding Path=Element[Github].Value}"  >
+                    <DataGridHyperlinkColumn.ElementStyle>
+                        <Style>
+                            <EventSetter Event="Hyperlink.Click" Handler="DG_Hyperlink_Click"/>
+                        </Style>
+                    </DataGridHyperlinkColumn.ElementStyle>
+                </DataGridHyperlinkColumn>
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>
+   
